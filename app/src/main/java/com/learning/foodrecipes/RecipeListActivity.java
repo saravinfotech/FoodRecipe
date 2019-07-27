@@ -31,10 +31,10 @@ public class RecipeListActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_list);
         mRecipeListViewModel = ViewModelProviders.of(this).get(RecipeListViewModels.class);
-        subscribeObeservers();
+        subscribeObservers();
     }
 
-    public void subscribeObeservers() {
+    public void subscribeObservers() {
         mRecipeListViewModel.getRecipe().observe(this, new Observer<List<Recipe>>() {
             @Override
             public void onChanged(@Nullable List<Recipe> recipes) {
