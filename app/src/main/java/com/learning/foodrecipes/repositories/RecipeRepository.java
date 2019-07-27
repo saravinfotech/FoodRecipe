@@ -1,7 +1,6 @@
 package com.learning.foodrecipes.repositories;
 
 import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
 
 import com.learning.foodrecipes.models.Recipe;
 
@@ -10,10 +9,10 @@ import java.util.List;
 public class RecipeRepository {
 
     private static RecipeRepository instance;
-    private MutableLiveData<List<Recipe>> mRecipes;
+    private RecipeRepository recipeRepository;
 
     private RecipeRepository() {
-        mRecipes = new MutableLiveData<>();
+        recipeRepository = RecipeRepository.getInstance();
     }
 
     public static RecipeRepository getInstance() {
@@ -24,6 +23,6 @@ public class RecipeRepository {
     }
 
     public LiveData<List<Recipe>> getRecipes() {
-        return mRecipes;
+        return recipeRepository.getRecipes();
     }
 }
