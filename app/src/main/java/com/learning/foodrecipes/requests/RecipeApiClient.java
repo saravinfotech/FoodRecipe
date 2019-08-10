@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 import retrofit2.Call;
 import retrofit2.Response;
 
-import static com.learning.foodrecipes.util.Constants.BASE_URL;
+import static com.learning.foodrecipes.util.Constants.API_KEY;
 import static com.learning.foodrecipes.util.Constants.NETWORK_TIME_OUT;
 
 public class RecipeApiClient {
@@ -99,8 +99,8 @@ public class RecipeApiClient {
 
         private Call<RecipeSearchResponse> getRecipes(String query, int pageNumber) {
             return new ServiceGenerator().getRecipeAPI().searchRecipe(
-                    //API_KEY,
-                    BASE_URL,
+                    API_KEY,
+                    //BASE_URL,
                     query,
                     String.valueOf(pageNumber)
             );

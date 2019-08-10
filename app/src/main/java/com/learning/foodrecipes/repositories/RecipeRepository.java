@@ -3,16 +3,17 @@ package com.learning.foodrecipes.repositories;
 import android.arch.lifecycle.LiveData;
 
 import com.learning.foodrecipes.models.Recipe;
+import com.learning.foodrecipes.requests.RecipeApiClient;
 
 import java.util.List;
 
 public class RecipeRepository {
 
     private static RecipeRepository instance;
-    private RecipeRepository recipeRepository;
+    private RecipeApiClient mRecipeApiClient;
 
     private RecipeRepository() {
-        recipeRepository = RecipeRepository.getInstance();
+        mRecipeApiClient = RecipeApiClient.getInstance();
     }
 
     public static RecipeRepository getInstance() {
@@ -23,7 +24,7 @@ public class RecipeRepository {
     }
 
     public LiveData<List<Recipe>> getRecipes() {
-        return recipeRepository.getRecipes();
+        return mRecipeApiClient.getRecipe();
     }
 
     public void searchRecipesApi(String query, int pageNumber) {
@@ -31,6 +32,6 @@ public class RecipeRepository {
             pageNumber = 1;
         }
 
-        recipeRepository.searchRecipesApi(query, pageNumber);
+        mRecipeApiClient.searchRecipesAPI(query, pageNumber);
     }
 }

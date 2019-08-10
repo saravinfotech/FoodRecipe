@@ -4,10 +4,10 @@ import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.View;
 
 import com.learning.foodrecipes.models.Recipe;
+import com.learning.foodrecipes.util.Testing;
 import com.learning.foodrecipes.viewmodels.RecipeListViewModels;
 
 import java.util.List;
@@ -36,9 +36,7 @@ public class RecipeListActivity extends BaseActivity {
             @Override
             public void onChanged(@Nullable List<Recipe> recipes) {
                 if (recipes != null) {
-                    for (Recipe recipe : recipes) {
-                        Log.d(TAG, "onChanged: " + recipe.getTitle());
-                    }
+                    Testing.printRecipes(recipes, "recipes test");
                 }
             }
         });
@@ -49,6 +47,6 @@ public class RecipeListActivity extends BaseActivity {
     }
 
     public void testResponse() {
-        searchRecipesAPI("chicker Breast", 1);
+        searchRecipesAPI("chicken", 1);
     }
 }
