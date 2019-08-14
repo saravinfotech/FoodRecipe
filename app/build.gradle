@@ -43,4 +43,7 @@ dependencies {
     //RecyclerView
     implementation "com.android.support:recyclerview-v7:$supportVersion"
 
+    //glide
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glideVersion"
 }
