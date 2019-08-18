@@ -15,11 +15,10 @@ import java.util.List;
 
 public class RecipeRecylerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    List<Recipe> recipiesList;
+    private List<Recipe> recipiesList;
     private OnRecipeListener onRecipeListener;
 
-    public RecipeRecylerAdapter(List<Recipe> recipiesList, OnRecipeListener onRecipeListener) {
-        this.recipiesList = recipiesList;
+    public RecipeRecylerAdapter(OnRecipeListener onRecipeListener) {
         this.onRecipeListener = onRecipeListener;
     }
 
@@ -36,6 +35,7 @@ public class RecipeRecylerAdapter extends RecyclerView.Adapter<RecyclerView.View
         RequestOptions requestOptions = new RequestOptions()
                 .placeholder(R.drawable.ic_launcher_background);
         Glide.with(viewHolder.itemView.getContext())
+                .setDefaultRequestOptions(requestOptions)
                 .load(recipiesList.get(i).getImage_url())
                 .into(((RecipeViewHolder) viewHolder).image);
 
@@ -46,7 +46,10 @@ public class RecipeRecylerAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     @Override
     public int getItemCount() {
-        return recipiesList.size();
+        if (recipiesList != null) {
+            return recipiesList.size();
+        }
+        return 0;
     }
 
     public void setRecipes(List<Recipe> recipes) {
